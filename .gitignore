@@ -3,5 +3,7 @@ target
 doc
 .idea
 out
-.iml
+*.iml
 drivers
+TAF
+taf.log
