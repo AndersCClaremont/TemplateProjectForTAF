@@ -11,9 +11,9 @@ public class NavigationMechanisms {
     TestCase testCase;
     WebInteractionMethods web;
 
-    public NavigationMechanisms(TestCase testCase){
-        this.testCase = testCase;
-        web = new WebInteractionMethods(this.testCase);
+    public NavigationMechanisms(WebInteractionMethods web){
+        this.testCase = web.getTestCase();
+        this.web = web;
     }
 
     public void ensureLandingPageDisplayed(){
@@ -30,10 +30,25 @@ public class NavigationMechanisms {
             web.saveDesktopScreenshot();
             web.saveHtmlContentOfCurrentPage();
             web.writeRunningProcessListDeviationsSinceTestCaseStart();
+            web.haltFurtherExecution();
         }
     }
 
     public void ensureContactsPageDisplayed(){
-
+        if(web.driver.getPageSource().contains("KONCERNCHEF OCH VD")){
+            web.log(LogLevel.DEBUG, "Made sure the contact page was displayed. It already was.");
+            return;
+        }
+        web.navigate("http://www.claremont.se/kontakt/");
+        if(web.driver.getPageSource().contains("KONCERNCHEF OCH VD")){
+            web.log(LogLevel.EXECUTED, "Made sure the contact page got displayed.");
+        } else {
+            web.log(LogLevel.EXECUTION_PROBLEM, "Could not navigate to contact page.");
+            web.saveScreenshot(null);
+            web.saveDesktopScreenshot();
+            web.saveHtmlContentOfCurrentPage();
+            web.writeRunningProcessListDeviationsSinceTestCaseStart();
+            web.haltFurtherExecution();
+        }
     }
 }

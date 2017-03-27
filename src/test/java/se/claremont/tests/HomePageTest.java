@@ -8,7 +8,6 @@ import se.claremont.autotest.common.testrun.Settings;
 import se.claremont.autotest.common.testrun.TestRun;
 import se.claremont.autotest.common.testset.TestSet;
 
-
 /**
  * When running these tests logs will be compiled to HTML and plain text and
  * stored in a folder called TAF in your user home directory.
@@ -74,6 +73,7 @@ public class HomePageTest extends TestSet {
         app.checkLandingPageLinks();
         app.checkLandingPageLayout();
         app.checkLandingPageTexts();
+        //app.nav.ensureContactsPageDisplayed();
 
         //The command below send the current HTML source of the web page for validation with W3C
         //app.checkLandingPageWithW3CValidator();
