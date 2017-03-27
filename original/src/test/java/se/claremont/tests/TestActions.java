@@ -1,8 +1,8 @@
 package se.claremont.tests;
 
 import se.claremont.applicationdescription.NavigationMechanisms;
-import se.claremont.autotest.common.TestCase;
-import se.claremont.autotest.guidriverpluginstructure.websupport.webdrivergluecode.WebInteractionMethods;
+import se.claremont.autotest.common.testcase.TestCase;
+import se.claremont.autotest.websupport.webdrivergluecode.WebInteractionMethods;
 
 /**
  * Created by jordam on 2016-12-04.

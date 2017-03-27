@@ -1,6 +1,6 @@
 package se.claremont.web.support;
 
-import se.claremont.autotest.common.TestCase;
+import se.claremont.autotest.common.testcase.TestCase;
 
 public class NavigationMechanisms {
     private TestCase testCase;

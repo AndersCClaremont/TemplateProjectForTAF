@@ -13,10 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import se.claremont.autotest.common.Settings;
-import se.claremont.autotest.common.TestRun;
-import se.claremont.autotest.common.TestRunReporterHtmlSummaryReportFile;
-import se.claremont.autotest.common.TestSet;
+import se.claremont.autotest.common.testrun.Settings;
+import se.claremont.autotest.common.testrun.TestRun;
+import se.claremont.autotest.common.testset.TestSet;
 import se.claremont.autotest.restsupport.RestResponse;
 import se.claremont.autotest.restsupport.RestSupport;
 
@@ -31,25 +30,10 @@ import static org.junit.Assert.assertFalse;
 public class RestIntegrationTest extends TestSet {
     @LocalServerPort
     private int port;
-
-    @Rule
-    public TestName currentTestName = new TestName();
     private RestSupport restSupport;
-
-    @BeforeClass
-    public static void classSetup(){
-        TestRun.settings.setValue(Settings.SettingParameters.PATH_TO_LOGO, "http://46.101.193.212/TAF/images/claremontlogo.gif");
-
-        //Base log folder is a TAF folder under user home folder
-        String path = RestIntegrationTest.class.getClassLoader().getResource(".").getFile();
-        TestRun.settings.setValue(Settings.SettingParameters.BASE_LOG_FOLDER, path);
-
-        TestRun.reporters.addTestRunReporter(new TestRunReporterHtmlSummaryReportFile());
-    }
 
     @Before
     public void setup() {
-        startUpTestCase(currentTestName.getMethodName());
         restSupport = new RestSupport(currentTestCase);
     }
 
@@ -91,17 +75,6 @@ public class RestIntegrationTest extends TestSet {
 
         assertFalse(response.isSuccessful());
         assertEquals(String.valueOf(HttpStatus.METHOD_NOT_ALLOWED.value()), response.responseCode);
-    }
-
-    @After
-    public void testTearDown(){
-        wrapUpTestCase();
-    }
-
-    @AfterClass
-    public static void ClassTearDown(){
-        TestRun.reporters.evaluateTestSet(TestRun.currentTestSet);
-        TestRun.reporters.report();
     }
 
 }

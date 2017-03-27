@@ -1,7 +1,8 @@
 package se.claremont.web.support;
 
-import se.claremont.autotest.common.TestCase;
-import se.claremont.autotest.guidriverpluginstructure.websupport.webdrivergluecode.WebInteractionMethods;
+
+import se.claremont.autotest.common.testcase.TestCase;
+import se.claremont.autotest.websupport.webdrivergluecode.WebInteractionMethods;
 
 public class TestActions {
     private TestCase testCase;

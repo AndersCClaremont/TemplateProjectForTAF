@@ -1,8 +1,8 @@
 package se.claremont.applicationdescription;
 
-import se.claremont.autotest.common.LogLevel;
-import se.claremont.autotest.common.TestCase;
-import se.claremont.autotest.guidriverpluginstructure.websupport.webdrivergluecode.WebInteractionMethods;
+import se.claremont.autotest.common.logging.LogLevel;
+import se.claremont.autotest.common.testcase.TestCase;
+import se.claremont.autotest.websupport.webdrivergluecode.WebInteractionMethods;
 
 /**
  * Created by jordam on 2016-12-04.
