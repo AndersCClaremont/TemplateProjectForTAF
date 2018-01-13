@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import se.claremont.autotest.common.testrun.Settings;
 import se.claremont.autotest.common.testrun.TestRun;
 import se.claremont.autotest.common.testset.TestSet;
@@ -55,7 +56,7 @@ public class HomePageTest extends TestSet {
 
     @Before
     public void testSetup(){
-        app = new TestActions(currentTestCase);
+        app = new TestActions(currentTestCase());
     }
 
     @After
@@ -66,6 +67,7 @@ public class HomePageTest extends TestSet {
     @Test
     public void landingPageTest(){
         app.nav.ensureLandingPageDisplayed(); //Making sure we're on the landing page
+        app.web.driver.findElement(By.xpath("//a")).click();
 
         //Line below is writing element descriptors for landing page to file, to be copy->pasted into page class.
         //app.web.mapCurrentPage("C:\\Temp\\landingpage.txt");
